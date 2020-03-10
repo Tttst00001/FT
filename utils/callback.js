@@ -24,15 +24,60 @@ function loopData(oargin){
         })
       }
     }
-
-    
-    
   }
   return arr
 }
 
+function callback_mf(arr){
+  let cbData = {
+    close: [],
+    pe: [],
+    pe_ttm: [],
+    pb: [],
+    ps: [],
+    ps_ttm: [],
+    dv_ratio: [],   
+    turnover_rate: [],
+    trade_date: [],
+    buy_sm_amount: [],
+    sell_sm_amount: [],
+    buy_md_amount: [],
+    sell_md_amount: [],
+    buy_lg_amount: [],
+    sell_lg_amount: [],
+    buy_elg_amount: [],
+    sell_elg_amount: [],
+    net_mf_amount: []
+  }
+  for (let i = 0; i < arr.length; i++) {
+    cbData.trade_date.push(arr[i].trade_date)
+
+    cbData.close.push(arr[i].close)
+    cbData.pe.push(arr[i].pe)
+    cbData.pe_ttm.push(arr[i].pe_ttm)
+    cbData.pb.push(arr[i].pb)
+    cbData.ps.push(arr[i].ps)
+    cbData.ps_ttm.push(arr[i].ps_ttm)
+    cbData.dv_ratio.push(arr[i].dv_ratio)
+    cbData.turnover_rate.push(arr[i].turnover_rate)
+
+    cbData.buy_sm_amount.push(arr[i].buy_sm_amount)
+    cbData.sell_sm_amount.push(arr[i].sell_sm_amount)
+    cbData.buy_md_amount.push(arr[i].buy_md_amount)
+    cbData.sell_md_amount.push(arr[i].sell_md_amount)
+    cbData.buy_lg_amount.push(arr[i].buy_lg_amount)
+    cbData.sell_lg_amount.push(arr[i].sell_lg_amount)
+    cbData.buy_elg_amount.push(arr[i].buy_elg_amount)
+    cbData.sell_elg_amount.push(arr[i].sell_elg_amount)
+    cbData.net_mf_amount.push(arr[i].net_mf_amount)
+  }
+
+  return cbData
+}
+
 const CommonFn = {
-  loopData
+  loopData,
+  callback_mf
 }
 
 module.exports = CommonFn

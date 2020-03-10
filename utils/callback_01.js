@@ -1,33 +1,8 @@
 const Models = require("../db");
 
-function ResData(origin){
-  const _String = '[object String]';
-    Models.FD201906.find({$or:[{ts_code: origin}]}).then(res => {
-      var n = loopData(res);
-    })
-    console.log(aaa)
-    // return n;
-
-  // if (Object.prototype.toString.call(origin) === _String) {
-  //   Models.FD201906.find({$or:[{ts_code: origin}]}).then(res => {
-  //     n = loopData(res);
-  //     console.log(1, n)
-  //     return n;
-  //   })
-  // } else {
-  //   Models.FD201906.find((err, items) => {
-  //     n = loopData(items);
-  //     return loopData(items);
-  //   })
-  // }
-}
-
 function loopData(oargin){
-
-  
   var arr = []
   for (let i = 0; i < oargin.length; i++) {
-    
     let target = oargin[i];
     let obj = {}
     if(target.daily_basic[0] && target.fina_indicator[0] && target.balancesheet[0]){
@@ -52,12 +27,12 @@ function loopData(oargin){
       obj.dt_netprofit_yoy = (dt_netprofit_yoy / 100).toFixed(2)
       obj.total_mv = total_mv / 100000000
       obj.goodwill = target.balancesheet[0].goodwill ? (target.balancesheet[0].goodwill / 100000000).toFixed(2) : 0; // 商誉
-      //if(parseInt(obj.rate) > 0 && dt_netprofit_yoy > 0 && dt_netprofit_yoy < 500 && obj.industry != '区域地产' && obj.industry != '全国地产' && obj.industry != '银行'){
+      if(parseInt(obj.rate) > 0 && dt_netprofit_yoy > 0 && dt_netprofit_yoy < 500 && obj.industry != '区域地产' && obj.industry != '全国地产' && obj.industry != '银行'){
         arr.push(obj)
-      //}
+      }
     }
   }
   return arr
 }
 
-module.exports = ResData
+module.exports = loopData
