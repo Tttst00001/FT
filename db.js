@@ -20,6 +20,28 @@ const basicData = new mongoose.Schema({
   collection: 'basicData'
 })
 
+// 主营业务
+const finaMainbz = new mongoose.Schema({
+	ts_code: String, //TS代码
+	name: String, // 股票名称
+	area: String, // 所在地域
+	industry: String, //所属行业
+	list_date: String, // 上市日期
+	fina_mainbz: Array // 主营业务
+	// ts_code: String, // 
+	// end_date: String, // 报告期
+	// bz_item: String, // 主营业务来源
+	// bz_sales: Number, // 主营业务收入
+	// bz_profit: Number, // 主营业务利润
+	// bz_cost: Number, // 主营业务成本
+	// curr_type: String, // 货币代码
+	// update_flag: String //是否更新
+},
+{
+  collection: 'finaMainbz'
+})
+
+
 // 
 const stockList = new mongoose.Schema({
   ts_code : String,
@@ -140,6 +162,7 @@ const tttst = new mongoose.Schema({
 
 const Models = {
   BASICDATA: mongoose.model('basicData', basicData),
+  FINAMAINBZ: mongoose.model('finaMainbz', finaMainbz),
   FD201906: mongoose.model('finalDay', finalDay),
   FD201912: mongoose.model('finalDay1912', finalDay1912),
   STOCKLIST: mongoose.model('stockList', stockList),
