@@ -13,7 +13,8 @@ const basicData = new mongoose.Schema({
   ts_code: String, //TS代码
   name: String, // 股票名称
   area: String, // 所在地域
-  industry: String //所属行业
+  industry: String, //所属行业
+  list_date: String // 上市日期
 },
 {
   collection: 'basicData'
