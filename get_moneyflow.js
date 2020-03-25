@@ -37,9 +37,6 @@ Promise.all([HTTP(moneyflow), HTTP(daily_basic)]).then(res => {
     obj.buy_elg_amount = (_moneyflow[i].buy_elg_amount * 10000 / 10000000).toFixed(5)
     obj.sell_elg_amount = (_moneyflow[i].sell_elg_amount * 10000 / 10000000).toFixed(5)
     obj.net_mf_amount = (_moneyflow[i].net_mf_amount * 10000 / 10000000).toFixed(5)
-
-
-
     // obj.buy_sm_vol = _moneyflow[i].buy_sm_vol
     // obj.sell_sm_vol = _moneyflow[i].sell_sm_vol
     // obj.buy_md_vol = _moneyflow[i].buy_md_vol

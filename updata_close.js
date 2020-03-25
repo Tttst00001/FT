@@ -6,7 +6,7 @@ setTimeout(() => {
   let args = {
     interface: 'daily_basic',
     data: {
-      trade_date: '20200309'
+      trade_date: '20200320'
     }
   }
   foo(args)

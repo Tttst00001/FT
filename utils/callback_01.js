@@ -1,6 +1,7 @@
 const Models = require("../db");
 
-function loopData(oargin){
+function loopData(oargin, flag){
+  flag != 0 ? flag = 1 : flag = 0
   var arr = []
   for (let i = 0; i < oargin.length; i++) {
     let target = oargin[i];
@@ -27,7 +28,12 @@ function loopData(oargin){
       obj.dt_netprofit_yoy = (dt_netprofit_yoy / 100).toFixed(2)
       obj.total_mv = total_mv / 100000000
       obj.goodwill = target.balancesheet[0].goodwill ? (target.balancesheet[0].goodwill / 100000000).toFixed(2) : 0; // 商誉
-      if(parseInt(obj.rate) > 0 && dt_netprofit_yoy > 0 && dt_netprofit_yoy < 500 && obj.industry != '区域地产' && obj.industry != '全国地产' && obj.industry != '银行'){
+      console.log(obj, flag)
+      if (flag) {
+        if(parseInt(obj.rate) > 0 && dt_netprofit_yoy > 0 && dt_netprofit_yoy < 500 && obj.industry != '区域地产' && obj.industry != '全国地产' && obj.industry != '银行'){
+          arr.push(obj)
+        }
+      } else {
         arr.push(obj)
       }
     }
