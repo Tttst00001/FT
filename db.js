@@ -114,55 +114,29 @@ const testprice2019 = new mongoose.Schema({
   collection: 'testprice2019'
 })
 
-// DIVIDENT2018
-const dividend2018 = new mongoose.Schema({
+// DIVIDEND
+const dividend = new mongoose.Schema({
 	ts_code: String,
-	end_date: String,
-	ann_date: String,
-	div_proc: String,
-	stk_div: Number,
-	stk_bo_rate: Number,
-	stk_co_rate: Number,
-	cash_div: Number,
-	cash_div_tax: Number,
-	record_date: String,
-	ex_date: String,
-	pay_date: String,
-	div_listdate: String,
-	imp_ann_date: String,
-	base_date: String,
-	base_share: Number
+	list: Array
+	// end_date: String,
+	// ann_date: String,
+	// div_proc: String,
+	// stk_div: Number,
+	// stk_bo_rate: Number,
+	// stk_co_rate: Number,
+	// cash_div: Number,
+	// cash_div_tax: Number,
+	// record_date: String,
+	// ex_date: String,
+	// pay_date: String,
+	// div_listdate: String,
+	// imp_ann_date: String,
+	// base_date: String,
+	// base_share: Number
 },
 {
-  collection: 'dividend2018'
+  collection: 'dividend'
 })
-
-// DIVIDENT2019
-const dividend2019 = new mongoose.Schema({
-	ts_code: String,
-	end_date: String,
-	ann_date: String,
-	div_proc: String,
-	stk_div: Number,
-	stk_bo_rate: Number,
-	stk_co_rate: Number,
-	cash_div: Number,
-	cash_div_tax: Number,
-	record_date: String,
-	ex_date: String,
-	pay_date: String,
-	div_listdate: String,
-	imp_ann_date: String,
-	base_date: String,
-	base_share: Number
-},
-{
-  collection: 'dividend2019'
-})
-
-
-
-
 
 const Models = {
   BASICDATA: mongoose.model('basicData', basicData),
@@ -170,8 +144,7 @@ const Models = {
   EXPRESS1812: mongoose.model('express1812', express1812),
   TEST2018: mongoose.model('testprice2018', testprice2018),
   TEST2019: mongoose.model('testprice2019', testprice2019),
-  DIVIDENT2018: mongoose.model('dividend2018', dividend2018),
-  DIVIDENT2019: mongoose.model('dividend2019', dividend2019),
+  DIVIDEND: mongoose.model('dividend', dividend)
 }
 
 module.exports = Models
