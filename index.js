@@ -20,9 +20,31 @@ app.all('*', function (req, res, next) {
 
 // 获取板块
 app.post('/stock', function (req, res) {
-  if (req.body.code != '') {
-    Models.FD201906.find({$or:[{ts_code: req.body.code}]}).then(Response => {
+	if (req.body.year == '2018') {
+		Models.TEST2018.find((err, items) => {
+		  let nn = loopData(items)
+		  console.log('nn', nn)
+		  res.send({
+			state: 200,
+			data: nn
+		  })
+		})
+	} else if (req.body.year == '2019') {
+		Models.TEST2019.find((err, items) => {
+		  let nn = loopData(items)
+		  console.log('nn', nn)
+		  res.send({
+			state: 200,
+			data: nn
+		  })
+		})
+		
+	} else {
+		if (req.body.code != '') {
+	  console.log('req.body.code', req.body.code)
+    Models.finaMainbz.find({$or:[{ts_code: req.body.code}]}).then(Response => {
       let nn = loopData(Response, 0)
+	  console.log(Response, nn)
       res.send({
         state: 200,
         data: nn
@@ -38,6 +60,10 @@ app.post('/stock', function (req, res) {
       })
     })
   }
+		
+	}
+	
+  
 })
 
 // 获取资金流向
@@ -87,8 +113,9 @@ app.post('/moneyflow', function (req, response) {
     }
     let db = res._daily_basic;
     let mf = res._moneyflow;
-
+	let count = 0;
     for (let i = 0; i < db.length; i++) {
+		count += mf[i].net_mf_amount
       cbData.trade_date.unshift(db[i].trade_date)
       cbData.close.unshift(db[i].close)
       cbData.pe.unshift(db[i].pe)
@@ -108,6 +135,7 @@ app.post('/moneyflow', function (req, response) {
       cbData.sell_elg_amount.unshift(mf[i].sell_elg_amount)
       cbData.net_mf_amount.unshift(mf[i].net_mf_amount)
     }
+	cbData.count = count
 
     response.send({
       state: 200,
@@ -118,4 +146,4 @@ app.post('/moneyflow', function (req, response) {
 
 
 
-app.listen(5000, () => console.log('**********【服务器启动成功】**********'));
+app.listen(8002, () => console.log('**********【服务器启动成功】**********'));

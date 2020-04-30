@@ -3,7 +3,7 @@ const HTTP = require('./utils/http.js')
 const RD = require('./utils/resdata.js')
 
 /*
-获取主营业务
+获取2018年年报
 
 */
 
@@ -18,25 +18,18 @@ function callFun(){
 			(function (){
 				setTimeout(function (){
 					let args = {
-						interface: 'fina_mainbz',
+						interface: 'express',
 						data: {
 						  ts_code: items[i].ts_code,
-						  period: '20190630'
+						  period: '20181231'
 						}
 					}
 					
 					HTTP(args).then(res => {
 						let lineData = RD(res);
-						let obj = {
-							ts_code: items[i].ts_code,
-							name: items[i].name,
-							area: items[i].area,
-							industry: items[i].industry,
-							list_date: items[i].list_date,
-							fina_mainbz: lineData
-						}
 						
-						Models.FINAMAINBZ.insertMany(obj, (err, items) => {
+						
+						Models.EXPRESS1812.insertMany(lineData, (err, items) => {
 							console.log('ok', i)
 						})
 					})

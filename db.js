@@ -42,132 +42,136 @@ const finaMainbz = new mongoose.Schema({
 })
 
 
-// 
-const stockList = new mongoose.Schema({
-  ts_code : String,
-  trade_date : Number,
-  close : Number,
-  turnover_rate : Number,
-  turnover_rate_f : Number,
-  volume_ratio : Number,
-  pe : Number,
-  pe_ttm : Number,
-  pb : Number,
-  ps : Number,
-  ps_ttm : Number,
-  dv_ratio : Number,
-  dv_ttm : Number,
-  total_share : Number,
-  float_share : Number,
-  free_share : Number,
-  total_mv : Number,
-  circ_mv : Number
+// 业绩快报
+const express1812 = new mongoose.Schema({
+	ts_code: String, //	TS股票代码
+	ann_date: String, //	公告日期
+	end_date: String, //	报告期
+	revenue: Number, //	营业收入(元)
+	operate_profit: Number, //	营业利润(元)
+	total_profit: Number, //	利润总额(元)
+	n_income: Number, //	净利润(元)
+	total_assets: Number, //	总资产(元)
+	total_hldr_eqy_exc_min_int: Number, //	股东权益合计(不含少数股东权益)(元)
+	diluted_eps: Number, //	每股收益(摊薄)(元)
+	diluted_roe: Number, //	净资产收益率(摊薄)(%)
+	yoy_net_profit: Number, //	去年同期修正后净利润
+	bps: Number, //	每股净资产
+	yoy_sales: Number, //	同比增长率:营业收入
+	yoy_op: Number, //	同比增长率:营业利润
+	yoy_tp: Number, //	同比增长率:利润总额
+	yoy_dedu_np: Number, //	同比增长率:归属母公司股东的净利润
+	yoy_eps: Number, //	同比增长率:基本每股收益
+	yoy_roe: Number, //	同比增减:加权平均净资产收益率
+	growth_assets: Number, //	比年初增长率:总资产
+	yoy_equity: Number, //	比年初增长率:归属母公司的股东权益
+	growth_bps: Number, //	比年初增长率:归属于母公司股东的每股净资产
+	or_last_year: Number, //	去年同期营业收入
+	op_last_year: Number, //	去年同期营业利润
+	tp_last_year: Number, //	去年同期利润总额
+	np_last_year: Number, //	去年同期净利润
+	eps_last_year: Number, //	去年同期每股收益
+	open_net_assets: Number, //	期初净资产
+	open_bps: Number, //	期初每股净资产
+	perf_summary: String, //		业绩简要说明
+	is_audit: String, //		是否审计： 1是 0否
+	remark: String //		备注
+
 },
 {
-  collection: 'stockList'
+  collection: 'express1812'
 })
 
 
-// T2
-const finalDay = new mongoose.Schema({
+// TEST2018
+const testprice2018 = new mongoose.Schema({
   ts_code: String, //TS代码
   name: String, // 股票名称
   area: String, // 所在地域
   industry: String, //所属行业
   daily_basic: Array,
   fina_indicator: Array,
-  balancesheet: Array
+  balancesheet: Array,
+  daily_basic_s: Array,
+  dividend: Array
 },
 {
-  collection: 'finalDay'
+  collection: 'testprice2018'
 })
 
-// T3
-const finalDay1912 = new mongoose.Schema({
+// TEST2019
+const testprice2019 = new mongoose.Schema({
   ts_code: String, //TS代码
   name: String, // 股票名称
   area: String, // 所在地域
   industry: String, //所属行业
   daily_basic: Array,
   fina_indicator: Array,
-  balancesheet: Array
+  balancesheet: Array,
+  daily_basic_s: Array
 },
 {
-  collection: 'finalDay1912'
+  collection: 'testprice2019'
 })
 
-// 个股资金流向
-const moneyflow = new mongoose.Schema({
-  ts_code: String,
-  trade_date: String,
-  buy_sm_vol: String,
-  buy_sm_amount: String,
-  sell_sm_vol: String,
-  sell_sm_amount: String,
-  buy_md_vol: String,
-  buy_md_amount: String,
-  sell_md_vol: String,
-  sell_md_amount: String,
-  buy_lg_vol: String,
-  buy_lg_amount: String,
-  sell_lg_vol: String,
-  sell_lg_amount: String,
-  buy_elg_vol: String,
-  buy_elg_amount: String,
-  sell_elg_vol: String,
-  sell_elg_amount: String,
-  net_mf_vol: String,
-  net_mf_amount: String,
-  close: Number,
-  pe: Number,
-  pe_ttm: Number,
-  pb: Number,
-  ps: Number,
-  ps_ttm: Number,
-  dv_ratio: Number,   
-  turnover_rate: Number
+// DIVIDENT2018
+const dividend2018 = new mongoose.Schema({
+	ts_code: String,
+	end_date: String,
+	ann_date: String,
+	div_proc: String,
+	stk_div: Number,
+	stk_bo_rate: Number,
+	stk_co_rate: Number,
+	cash_div: Number,
+	cash_div_tax: Number,
+	record_date: String,
+	ex_date: String,
+	pay_date: String,
+	div_listdate: String,
+	imp_ann_date: String,
+	base_date: String,
+	base_share: Number
 },
 {
-  collection: 'moneyflow'
+  collection: 'dividend2018'
 })
 
-// TTTTT
-const tttst = new mongoose.Schema({
-  daily_basic: Array
-  // ts_code: String,
-  // trade_date: String,
-  // close: String,
-  // turnover_rate: String,
-  // turnover_rate_f: String,
-  // volume_ratio: String,
-  // pe: String,
-  // pe_ttm: String,
-  // pb: String,
-  // ps: String,
-  // ps_ttm: String,
-  // dv_ratio: String,
-  // dv_ttm: String,
-  // total_share: String,
-  // float_share: String,
-  // free_share: String,
-  // total_mv: String,
-  // circ_mv: String
-
+// DIVIDENT2019
+const dividend2019 = new mongoose.Schema({
+	ts_code: String,
+	end_date: String,
+	ann_date: String,
+	div_proc: String,
+	stk_div: Number,
+	stk_bo_rate: Number,
+	stk_co_rate: Number,
+	cash_div: Number,
+	cash_div_tax: Number,
+	record_date: String,
+	ex_date: String,
+	pay_date: String,
+	div_listdate: String,
+	imp_ann_date: String,
+	base_date: String,
+	base_share: Number
 },
 {
-  collection: 'tttst'
+  collection: 'dividend2019'
 })
+
+
 
 
 
 const Models = {
   BASICDATA: mongoose.model('basicData', basicData),
   FINAMAINBZ: mongoose.model('finaMainbz', finaMainbz),
-  FD201906: mongoose.model('finalDay', finalDay),
-  FD201912: mongoose.model('finalDay1912', finalDay1912),
-  STOCKLIST: mongoose.model('stockList', stockList),
-  MONEYFLOW: mongoose.model('moneyflow', moneyflow),
-  TTTST: mongoose.model('tttst', tttst),
+  EXPRESS1812: mongoose.model('express1812', express1812),
+  TEST2018: mongoose.model('testprice2018', testprice2018),
+  TEST2019: mongoose.model('testprice2019', testprice2019),
+  DIVIDENT2018: mongoose.model('dividend2018', dividend2018),
+  DIVIDENT2019: mongoose.model('dividend2019', dividend2019),
 }
 
 module.exports = Models

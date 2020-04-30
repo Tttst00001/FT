@@ -17,7 +17,7 @@ function Foo(){
             interface: 'daily_basic',
             data: {
               ts_code: items[i].ts_code,
-              trade_date: '20200228'
+              trade_date: '20200102'
             }
           }
 
@@ -49,7 +49,7 @@ function Foo(){
             obj.daily_basic = $daily_basic
             obj.fina_indicator = $fina_indicator
             obj.balancesheet = $balancesheet
-            Models.FD201912.insertMany(obj, (err, items) => {
+            Models.TEST2019.insertMany(obj, (err, items) => {
               console.log('ok', i)
             })
           }).catch(err => {

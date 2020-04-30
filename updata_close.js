@@ -6,7 +6,7 @@ setTimeout(() => {
   let args = {
     interface: 'daily_basic',
     data: {
-      trade_date: '20200320'
+      trade_date: '20200429'
     }
   }
   foo(args)
@@ -16,7 +16,7 @@ function foo(args){
   HTTP(args).then(res => {
     let list = RD(res)
     for (let i = 0; i < list.length; i++) {
-      Models.FD201906.update({ts_code: list[i].ts_code}, {daily_basic: list[i]}).then(cb => {
+      Models.TEST2019.update({ts_code: list[i].ts_code}, {daily_basic: list[i]}).then(cb => {
         console.log(cb)
       })
     }
