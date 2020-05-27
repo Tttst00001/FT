@@ -3,6 +3,7 @@ const app = express();
 const Models = require("./db");
 const CommonFn = require('./utils/callback.js')
 const loopData = require('./utils/callback_01.js')
+const { Fun_dividend, Fun_dividend_info } = require('./utils/dividend.js')
 const HTTP = require('./utils/http.js')
 const RD = require('./utils/resdata.js')
 var bodyParser = require('body-parser');
@@ -142,6 +143,29 @@ app.post('/moneyflow', function (req, response) {
       data: cbData
     })
   })
+})
+
+// 获取分红
+app.post('/get_dividend', function (req, res) {
+	Models.DIVIDEND.find((err, items) => {
+		let cb = Fun_dividend(items);
+		res.send({
+			state: 200,
+			data: cb
+		})
+	})
+})
+
+// 获取分红详情
+app.post('/get_dividend_info', function (req, res) {
+	Models.DIVIDEND.find((err, items) => {
+		let cb = Fun_dividend_info(items, req.body.code);
+		console.log(cb)
+		res.send({
+			state: 200,
+			data: cb
+		})
+	})
 })
 
 

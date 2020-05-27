@@ -21,7 +21,7 @@ function callFun(){
 						interface: 'express',
 						data: {
 						  ts_code: items[i].ts_code,
-						  period: '20181231'
+						  period: '20191231'
 						}
 					}
 					
@@ -29,7 +29,7 @@ function callFun(){
 						let lineData = RD(res);
 						
 						
-						Models.EXPRESS1812.insertMany(lineData, (err, items) => {
+						Models.EXPRESS2019.insertMany(lineData, (err, items) => {
 							console.log('ok', i)
 						})
 					})

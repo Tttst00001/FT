@@ -43,7 +43,7 @@ const finaMainbz = new mongoose.Schema({
 
 
 // 业绩快报
-const express1812 = new mongoose.Schema({
+const express2019 = new mongoose.Schema({
 	ts_code: String, //	TS股票代码
 	ann_date: String, //	公告日期
 	end_date: String, //	报告期
@@ -79,7 +79,7 @@ const express1812 = new mongoose.Schema({
 
 },
 {
-  collection: 'express1812'
+  collection: 'express2019'
 })
 
 
@@ -117,6 +117,8 @@ const testprice2019 = new mongoose.Schema({
 // DIVIDEND
 const dividend = new mongoose.Schema({
 	ts_code: String,
+	name: String,
+	industry: String,
 	list: Array
 	// end_date: String,
 	// ann_date: String,
@@ -138,13 +140,27 @@ const dividend = new mongoose.Schema({
   collection: 'dividend'
 })
 
+// stk_holdernumber
+const get_stk_holdernumber = new mongoose.Schema({
+  code: String, 
+  list: Array
+  
+},
+{
+  collection: 'get_stk_holdernumber'
+})
+
+
+
+
 const Models = {
   BASICDATA: mongoose.model('basicData', basicData),
   FINAMAINBZ: mongoose.model('finaMainbz', finaMainbz),
-  EXPRESS1812: mongoose.model('express1812', express1812),
+  EXPRESS2019: mongoose.model('express2019', express2019),
   TEST2018: mongoose.model('testprice2018', testprice2018),
   TEST2019: mongoose.model('testprice2019', testprice2019),
-  DIVIDEND: mongoose.model('dividend', dividend)
+  DIVIDEND: mongoose.model('dividend', dividend),
+  STKHOLDERNUMBER: mongoose.model('get_stk_holdernumber', get_stk_holdernumber)
 }
 
 module.exports = Models
